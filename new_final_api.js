@@ -30,8 +30,13 @@ app.use(express.static(__dirname));
 // Express route for incoming requests for a single input
 app.get('/inputs/:id', function (req, res) {
   // send an object as a JSON string
+  var pin=req.body.pin;
+  var gpio=req.body.gpio;
+  var value=req.body.value;
+  console.log(req.body);
   console.log('id = ' + req.params.id);
   console.log('value is'+led.readSync());
+  
   
   res.send(inputs[req.params.id]);
 }); // apt.get()
@@ -65,10 +70,11 @@ app.post('/inputs/0',function(req,res){
   })[0];
   if((typeof testObj !== 'undefined')) {
 				  if(obj.value == 0){
+					  
 				  led.writeSync(0);
 				  }
 				  else{
-				  led.writeSync(1);
+					 led.writeSync(1);
                   }
 				  testObj.value = obj.value
   } else {
