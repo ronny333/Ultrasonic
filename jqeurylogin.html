@@ -1,0 +1,40 @@
+<html>
+<head>
+<title>Smart Parking</title>
+<meta name="robots" content="noindex, nofollow">
+<!-- Include CSS File Here -->
+<link rel="stylesheet" href="css/style.css"/>
+<!-- Include CSS File Here -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"> </script>
+<script>
+$(document).ready(function(){
+var user,pass;
+$("#submit").click(function(){
+user= $("#user").val();
+pass=$("#password").val();
+$.post("http://localhost:3000/login",{user: user,password: pass},function(data){
+if(data==='done')
+{
+alert("login sucess");
+}
+});
+});
+});
+</script>
+</head>
+<body>
+<div class="container">
+<div class="main">
+<form class="form" method="post" action="#">
+<h2>SMART</h2>
+<label>UserId :</label>
+<input type="text" name="user" id="user"><br>
+<label>Password :</label>
+<input type="password" name="password" id="password"><br>
+<input type="button" name="submit" id="submit" value="Login">
+</form>
+</div>
+</div>
+</body>
+</html>
