@@ -40,6 +40,7 @@ padding: 0px 10px;
 width: 280px;
 -webkit-appearance:none;
 }
+
 form fieldset input[type="submit"] {
 background-color: #008dde;
 border: none;
@@ -139,6 +140,17 @@ alert("login sucess");
 }
 });
 });
+
+$("#submit1").click(function(){
+user= $("#Username").val();
+pass=$("#Password").val();
+$.post("http://localhost:3000/register",{user: user,password: pass},function(data){
+if(data==='done')
+{
+alert("login sucess");
+}
+});
+});
 });
 </script>
 
@@ -152,6 +164,7 @@ alert("login sucess");
 <p><input type="password" required value="Password" id="Password" onBlur="if(this.value=='')this.value='Password'" onFocus="if(this.value=='Password')this.value='' "></p>
 <p><a href="#">Forgot Password?</a></p>
 <p><input type="submit" value="Login" id="submit"></p>
+<p><input type="submit" value="Register" id="submit1"></p>
 </fieldset>
 </form>
 <p><span class="btn-round">or</span></p>
