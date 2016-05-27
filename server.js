@@ -10,18 +10,19 @@ app.use(bodyParser.json());
 
 
 app.get('/',function(req,res){
-res.sendfile("jqeurylogin.html");
+res.sendFile(__dirname +"/temp.html");
 });
 
 app.post('/login',function(req,res){
 var user_name=req.body.user;
 var password1=req.body.password;
 console.log(user_name);
-MongoClient.connect('mongodb://10.66.30.78:27017/parking',
+console.log(password1);
+MongoClient.connect('mongodb://localhost:27017/parking',
 function(err,db){
 if (err) throw err;
-var cursor=db.collection('users').find({Name:user_name,password:password1});
-cursor.limit(1);
+var cursor=db.collection('parking').find({Name:user_name,Password:password1});
+
 var rc=0
 cursor.each(function(err,doc) {
 if(err) throw err;
